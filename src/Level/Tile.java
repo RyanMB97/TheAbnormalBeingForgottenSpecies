@@ -6,6 +6,8 @@ import java.awt.Rectangle;
 import Core.Game;
 
 public abstract class Tile extends Rectangle {
+	private static final long serialVersionUID = 9115305928315115012L;
+	
 	private Game game;
 	private int initialX, initialY, worldXPos, worldYPos;
 	private int tileID;

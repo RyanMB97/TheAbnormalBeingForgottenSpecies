@@ -6,6 +6,9 @@ import Core.Game;
 import Core.ResourceManager;
 
 public class BasicTile extends Tile {
+	private static final long serialVersionUID = 1390334971193443702L;
+	
+
 	public BasicTile(Game game, int x, int y) {
 		setGame(game);
 		setInitialX(x);

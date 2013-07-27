@@ -137,7 +137,7 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public void tick() {
-		frame.setTitle(TITLE + " FPS: " + FPS);
+		frame.setTitle(TITLE + " FPS: " + FPS + " UPS: " + UPS);
 
 		getWorld().tick();
 		getPlayer().tick();

@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class Launcher {
 	// JFrame related items
@@ -16,7 +18,7 @@ public class Launcher {
 	private JFrame frame;
 
 	// Other Items (Buttons, etc)
-	private String[] buttonNames = { "Play", "Quit" };
+	private String[] buttonNames = { "New Game", "Load Game", "Options", "Special", "Quit" };
 	private JButton[] buttons = new JButton[buttonNames.length];
 	private final int buttonWidth = 120, buttonHeight = 30;
 
@@ -39,20 +41,35 @@ public class Launcher {
 	public void addButtons() {
 		for (int i = 0; i < buttonNames.length; i++) {
 			buttons[i] = new JButton(buttonNames[i]);
-			buttons[i].setBounds((WIDTH / 2) - (buttonWidth / 2), i * 100 + buttonHeight, buttonWidth, buttonHeight);
+			buttons[i].setBounds((WIDTH / 2) - (buttonWidth / 2), i * (buttonHeight + 5) + (buttonHeight - 5), buttonWidth, buttonHeight);
 			frame.add(buttons[i]);
 		}
 	}
 
 	public void addButtonActions() {
-		buttons[0].addActionListener(new ActionListener() { // Play Button
+		buttons[0].addActionListener(new ActionListener() { // New Game
 					public void actionPerformed(ActionEvent e) {
 						new Game().start();
 						frame.dispose();
 					}
 				});
 
-		buttons[1].addActionListener(new ActionListener() { // Quit
+		buttons[1].addActionListener(new ActionListener() { // Load Game
+					public void actionPerformed(ActionEvent e) {
+					}
+				});
+
+		buttons[2].addActionListener(new ActionListener() { // Options
+					public void actionPerformed(ActionEvent e) {
+					}
+				});
+
+		buttons[3].addActionListener(new ActionListener() { // Special
+					public void actionPerformed(ActionEvent e) {
+					}
+				});
+
+		buttons[4].addActionListener(new ActionListener() { // Quit
 					public void actionPerformed(ActionEvent e) {
 						System.exit(0);
 					}
@@ -60,6 +77,21 @@ public class Launcher {
 	}
 
 	public static void main(String[] args) {
+		try {
+			UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+		} catch (UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
+
 		new Launcher();
 	}
 }

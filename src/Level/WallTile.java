@@ -6,6 +6,8 @@ import Core.Game;
 import Core.ResourceManager;
 
 public class WallTile extends Tile {
+	private static final long serialVersionUID = -3141492952501858642L;
+
 	public WallTile(Game game, int x, int y) {
 		setGame(game);
 		setInitialX(x);

@@ -4,15 +4,16 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import Core.Game;
-import Core.ResourceManager;
-import Level.Tile;
 
 public class Player extends Rectangle {
+	private static final long serialVersionUID = 3209161959657713500L;
+	
 	private Game game;
 	private int xPos, yPos; // Positions on the screen itself
 	private int worldXPos, worldYPos; // Position in pixels in the game-world
 	private int worldTileX, worldTileY; // Position in tiles of the game-world
 	private int width, height; // Width and Height of the player
+	private int maxHealth = 100, currentHealth = 100, healthRatio; // Player Health
 
 	// Movement
 	private int movementSpeed;
@@ -40,6 +41,7 @@ public class Player extends Rectangle {
 		checkBoundaries();
 		checkForCollisions();
 		updatePos();
+		healthRatio = currentHealth / maxHealth;
 		setBounds(getxPos(), getyPos(), this.width, this.height);
 	}
 
@@ -236,5 +238,21 @@ public class Player extends Rectangle {
 
 	public void setCanDown(boolean canDown) {
 		this.canDown = canDown;
+	}
+
+	public int getCurrentHealth() {
+		return currentHealth;
+	}
+
+	public void setCurrentHealth(int currentHealth) {
+		this.currentHealth = currentHealth;
+	}
+
+	public int getHealthRatio() {
+		return healthRatio;
+	}
+
+	public void setHealthRatio(int healthRatio) {
+		this.healthRatio = healthRatio;
 	}
 }
